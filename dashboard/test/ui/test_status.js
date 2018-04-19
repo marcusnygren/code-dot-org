@@ -239,7 +239,7 @@ function renderBrowserProgress(browser, progress) {
   }
 
   // Set progress text
-  let runPercent = successPercent + failurePercent;
+  const runPercent = Math.min(successPercent + failurePercent, pendingCount > 0 ? 99.9 : 100);
   progressText.textContent = `${runPercent}% of ${totalCount} tests have run.`
       + ` ${successCount} passed,`
       + ` ${failureCount} failed,`
